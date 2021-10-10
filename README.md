@@ -1,6 +1,6 @@
 # chartjs_sample
 
-```ruby
+```bash
 $ bundle install
 $ bundle exec ruby create_data_for_chartjs.rb -i sample.csv
 
