@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div style="width: 50%; height: 50%; margin-left: auto; margin-right: auto;">
+    <div>
+      <canvas id="chartDate" width="400" height="400"></canvas>
+    </div>
+    <div>
+      <canvas id="chartPerson" width="400" height="400"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
+  <script>
+    const data_date = {
+      datasets: [{
+        label: 'numbers for each date',
+        backgroundColor: 'rgb(255, 201, 191)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [{date: "2020/02", v: 2}, {date: "2020/03", v: 1}, {date: "2020/04", v: 4}, {date: "2020/05", v: 2}, {date: "2020/06", v: 2}, {date: "2020/07", v: 1}, {date: "2020/08", v: 1}, {date: "2020/09", v: 1}, {date: "2020/10", v: 1}, {date: "2020/12", v: 1}, {date: "2021/01", v: 1}, {date: "2021/02", v: 1}, {date: "2021/03", v: 1}, {date: "2021/05", v: 3}, {date: "2021/06", v: 1}, {date: "2021/07", v: 2}, {date: "2021/08", v: 2}, {date: "2021/09", v: 3}]
+      }]
+    };
+    const data_person = {
+      datasets: [{
+        label: 'numbers for each person',
+        backgroundColor: 'rgb(191, 228, 255)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [{name: "koike", v: 8}, {name: "sato", v: 5}, {name: "takahashi", v: 4}, {name: "tanaka", v: 6}, {name: "yamada", v: 6}, {name: "yoshida", v: 1}]
+      }]
+    };
+    const config_date = {
+      type: 'bar',
+      data: data_date,
+      options: {
+        parsing: {
+          xAxisKey: 'date',
+          yAxisKey: 'v'
+        },
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              parser: 'YYYY/MM/DD',
+              unit: 'month',
+            }
+          }
+        }
+      }
+    };
+    const config_person = {
+      type: 'bar',
+      data: data_person,
+      options: {
+        parsing: {
+          xAxisKey: 'name',
+          yAxisKey: 'v'
+        },
+      }
+    };
+    var chartDate = new Chart(
+      document.getElementById('chartDate'),
+      config_date
+    );
+    var chartPerson = new Chart(
+      document.getElementById('chartPerson'),
+      config_person
+    );
+  </script>
+</body>
+
+</html>
